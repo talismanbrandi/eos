@@ -16,9 +16,11 @@ get() {
     echo "Could not find ${1} ${2}" 1>&2
     exit 127
 }
+case `uname` in Darwin*) LIBTOOLIZE=glibtoolize;;
+	  *) LIBTOOLIZE=libtoolize;; esac
 
-run mkdir -p config
-run $(get libtoolize 1.5 ) --copy --force --automake
+run mkdir -p confiig
+run $(get $LIBTOOLIZE 1.5 ) --copy --force --automake
 rm -f config.cache
 run $(get aclocal 1.9 )
 run $(get autoheader 2.59 )
