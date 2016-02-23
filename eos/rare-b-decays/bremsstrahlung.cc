@@ -23,7 +23,7 @@
 
 #include <cmath>
 #include <limits>
-#include <tr1/functional>
+#include <functional>
 
 namespace eos
 {

@@ -26,7 +26,7 @@
 #include <eos/utils/instantiation_policy.hh>
 #include <eos/utils/private_implementation_pattern.hh>
 
-#include <tr1/functional>
+#include <functional>
 
 namespace eos
 {

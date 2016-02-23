@@ -24,7 +24,7 @@
 #include <eos/utils/private_implementation_pattern.hh>
 #include <eos/utils/ticket.hh>
 
-#include <tr1/functional>
+#include <functional>
 
 namespace eos
 {

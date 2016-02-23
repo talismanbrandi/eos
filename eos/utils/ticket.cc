@@ -25,7 +25,7 @@
 #include <eos/utils/ticket.hh>
 
 #include <list>
-#include <tr1/memory>
+#include <memory>
 
 namespace eos
 {
