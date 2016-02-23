@@ -173,6 +173,7 @@ dnl }}}
 
 dnl {{{ check for libraries
 save_LIBS=$LIBS
+LIBS=`gsl-config --libs`
 LIBS="$LIBS -lgslcblas" # work around Debian/Ubuntu oddities
 dnl {{{ check for -lgsl
 AC_CHECK_LIB(gsl, gsl_sf_zeta,
