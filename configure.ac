@@ -181,6 +181,7 @@ AC_CHECK_LIB(gsl, gsl_sf_zeta,
 	[AC_MSG_ERROR([you do seem to be lacking the GNU Scientific Library (http://www.gnu.org/software/gsl/).])])
 dnl }}}
 LIBS=$save_LIBS
+LIBS+=`gsl-config --libs`
 dnl }}}
 
 dnl {{{ define relevant EOS_* macros
