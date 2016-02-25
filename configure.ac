@@ -66,6 +66,8 @@ if test "x$with_minuit2" != x ; then
 	fi
 	CXXFLAGS="-I$with_minuit2/include $CXXFLAGS"
 	LDFLAGS="-L$with_minuit2/lib $LDFLAGS"
+else # Use root-config to find ROOT library path ## This should be enough on almost all systems
+    LDFLAGS+=`root-config --libs`
 fi
 dnl }}}
 dnl {{{ enable PMC path if supplied via --with-pmc=
@@ -173,7 +175,7 @@ dnl }}}
 
 dnl {{{ check for libraries
 save_LIBS=$LIBS
-LIBS=`gsl-config --libs`
+LIBS=`gsl-config --libs` # Use gsl-config for finding GSL libraries ## Maybe this is enough and 179 - 186 can be removed/restructured
 LIBS="$LIBS -lgslcblas" # work around Debian/Ubuntu oddities
 dnl {{{ check for -lgsl
 AC_CHECK_LIB(gsl, gsl_sf_zeta,
@@ -181,7 +183,7 @@ AC_CHECK_LIB(gsl, gsl_sf_zeta,
 	[AC_MSG_ERROR([you do seem to be lacking the GNU Scientific Library (http://www.gnu.org/software/gsl/).])])
 dnl }}}
 LIBS=$save_LIBS
-LIBS+=`gsl-config --libs`
+LIBS+=`gsl-config --libs` # Use gsl-config for finding GSL libraries
 dnl }}}
 
 dnl {{{ define relevant EOS_* macros
