@@ -388,18 +388,18 @@ class ConstrainedWilsonScanModelTest:
 
                 WilsonCoefficients<BToS> wc = model.wilson_coefficients_b_to_s(false);
 
-                TEST_CHECK_RELATIVE_ERROR(abs(wc.c7()), 1.008, eps);
+                TEST_CHECK_RELATIVE_ERROR(std::abs(wc.c7()), 1.008, eps);
 
                 /* C_P should be ignored, and always equal -C_S */
-                TEST_CHECK_RELATIVE_ERROR(abs(wc.cS()), 42, eps);
-                TEST_CHECK_RELATIVE_ERROR(abs(wc.cP()), 42, eps);
-                TEST_CHECK_RELATIVE_ERROR(real(wc.cP()), -real(wc.cS()), eps);
-                TEST_CHECK_RELATIVE_ERROR(imag(wc.cP()), -imag(wc.cS()), eps);
+                TEST_CHECK_RELATIVE_ERROR(std::abs(wc.cS()), 42, eps);
+                TEST_CHECK_RELATIVE_ERROR(std::abs(wc.cP()), 42, eps);
+                TEST_CHECK_RELATIVE_ERROR(std::real(wc.cP()), -real(wc.cS()), eps);
+                TEST_CHECK_RELATIVE_ERROR(std::imag(wc.cP()), -imag(wc.cS()), eps);
 
-                TEST_CHECK_RELATIVE_ERROR(abs(wc.cSprime()), 3.2, eps);
-                TEST_CHECK_RELATIVE_ERROR(arg(wc.cSprime()), 1.2, eps);
-                TEST_CHECK_RELATIVE_ERROR(abs(wc.cPprime()), 3.2, eps);
-                TEST_CHECK_RELATIVE_ERROR(arg(wc.cPprime()), 1.2, eps);
+                TEST_CHECK_RELATIVE_ERROR(std::abs(wc.cSprime()), 3.2, eps);
+                TEST_CHECK_RELATIVE_ERROR(std::arg(wc.cSprime()), 1.2, eps);
+                TEST_CHECK_RELATIVE_ERROR(std::abs(wc.cPprime()), 3.2, eps);
+                TEST_CHECK_RELATIVE_ERROR(std::arg(wc.cPprime()), 1.2, eps);
 
                 /* C_T and C_T5 vanish */
                 TEST_CHECK_NEARLY_EQUAL(std::real(wc.cT()), 0.0, eps);

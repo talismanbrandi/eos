@@ -301,7 +301,7 @@ namespace eos
 
         double decay_rate()
         {
-            double lambda_t = abs(model->ckm_tb() * conj(model->ckm_ts()));
+            double lambda_t = std::abs(model->ckm_tb() * conj(model->ckm_ts()));
             Amplitudes a = amplitudes();
 
             return alpha_e() * power_of<2>(g_fermi() * model->m_b_msbar(mu())) * power_of<3>(m_B()) / (32.0 * power_of<4>(M_PI)) *
@@ -326,7 +326,7 @@ namespace eos
             cp_conjugate = true;
             Amplitudes abar = amplitudes();
 
-            double lambda_t = abs(model->ckm_tb() * conj(model->ckm_ts()));
+            double lambda_t = std::abs(model->ckm_tb() * conj(model->ckm_ts()));
             return alpha_e() * power_of<2>(g_fermi() * model->m_b_msbar(mu())) * power_of<3>(m_B()) / (32.0 * power_of<4>(M_PI)) *
                 power_of<3>(1.0 - power_of<2>(m_Kstar / m_B)) * lambda_t * lambda_t * (std::norm(a.left) + std::norm(a.right) + std::norm(abar.left) + std::norm(abar.right)) / 2.0 / Gamma;
         }

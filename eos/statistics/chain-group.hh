@@ -68,7 +68,6 @@ namespace eos
             Iterator begin() const;
             Iterator end() const;
 
-            struct IteratorTag;
             typedef WrappedForwardIterator<IteratorTag, unsigned> IndexIterator;
             IndexIterator begin_indices() const;
             IndexIterator end_indices() const;

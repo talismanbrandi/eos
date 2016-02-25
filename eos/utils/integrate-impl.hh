@@ -91,7 +91,7 @@ namespace eos
 
             for (unsigned i = 0 ; i < k ; ++i)
             {
-                if ((abs(correction[i] / Q2[i])) > 1.0)
+                if ((std::abs(correction[i] / Q2[i])) > 1.0)
                 {
                     correction_small = false;
                     break;

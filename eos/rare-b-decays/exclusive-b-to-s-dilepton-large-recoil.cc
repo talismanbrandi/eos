@@ -2312,7 +2312,7 @@ namespace eos
         // cf. [BHP2007], Eqs. (4.2), (4.4), (4.5), p. 5
         double N(const double & s) const
         {
-            double lambda_t = abs(model->ckm_tb() * conj(model->ckm_ts()));
+            double lambda_t = std::abs(model->ckm_tb() * conj(model->ckm_ts()));
 
             return power_of<2>(g_fermi * alpha_e() * lambda_t) * std::sqrt(lam(s)) * beta_l(s) * xi_pseudo(s) * xi_pseudo(s) /
                     (512.0 * power_of<5>(M_PI) * power_of<3>(m_B()));

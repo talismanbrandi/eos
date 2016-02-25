@@ -432,7 +432,7 @@ namespace eos
             {
                 log_det += std::log(gsl_matrix_get(_covariance_chol, i, i));
             }
-            // -k/2 * log(2 Pi) - 1/2 log(abs(det(V)))
+            // -k/2 * log(2 Pi) - 1/2 log(std::abs(det(V)))
             // = -k2 * log(2 Pi) - log(det(L))
             norm = -0.5 * _dimension * std::log(2.0 * M_PI) - log_det;
         }
@@ -799,7 +799,7 @@ namespace eos
             {
                 log_det += std::log(gsl_matrix_get(_covariance_chol, i, i));
             }
-            // -k/2 * log(2 Pi) - 1/2 log(abs(det(V)))
+            // -k/2 * log(2 Pi) - 1/2 log(std::abs(det(V)))
             // = -k2 * log(2 Pi) - log(det(L))
             norm = -0.5 * _dimension * std::log(2.0 * M_PI) - log_det;
         }

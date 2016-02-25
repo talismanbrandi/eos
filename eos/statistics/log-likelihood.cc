@@ -975,7 +975,7 @@ namespace eos
             }
 
             // compute the normalization constant on log scale
-            // -k/2 * log 2 Pi - 1/2 log(abs(det(V^{-1})))
+            // -k/2 * log 2 Pi - 1/2 log(std::abs(det(V^{-1})))
             double compute_norm()
             {
                 // dimensionality of parameter space

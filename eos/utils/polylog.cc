@@ -62,7 +62,7 @@ namespace eos
 
                 result += summand;
 
-                if (abs(summand / result) < eps)
+                if (std::abs(summand / result) < eps)
                     break;
             }
 
@@ -180,7 +180,7 @@ namespace eos
 
                 result += summand;
 
-                if (abs(summand / result) < eps)
+                if (std::abs(summand / result) < eps)
                     break;
             }
 

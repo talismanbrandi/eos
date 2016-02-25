@@ -120,7 +120,7 @@ namespace eos
         // cf. [BEKU2002], Eq. (3.6)
         double branching_ratio_time_zero() const
         {
-            double lambda_t = abs(lambda(model.get()));
+            double lambda_t = std::abs(lambda(model.get()));
             double beta_l = std::sqrt(1.0 - 4.0 * power_of<2>(m_l / m_B()));
 
             WilsonCoefficients<BToS> wc = model->wilson_coefficients_b_to_s();
