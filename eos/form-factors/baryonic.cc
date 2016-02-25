@@ -21,6 +21,16 @@
 #include <eos/utils/destringify.hh>
 
 #include <map>
+#include <limits>
+namespace Detail
+{
+    double constexpr sqrtNewtonRaphson(double x, double curr, double prev)
+    {
+        return curr == prev
+        ? curr
+        : sqrtNewtonRaphson(x, 0.5 * (curr + x / curr), curr);
+    }
+}
 
 namespace eos
 {
@@ -43,10 +53,17 @@ namespace eos
             // Squares of the masses for the vector and axialvector Bbar_s resonances
             static constexpr double mv2 = 5.415 * 5.415;
             static constexpr double ma2 = 5.829 * 5.829;
+        
+            static double constexpr sqrtNR(double x)
+            {
+                return x >= 0 && x < std::numeric_limits<double>::infinity()
+                ? Detail::sqrtNewtonRaphson(x, x, 0)
+                : std::numeric_limits<double>::quiet_NaN();
+            }
 
             static constexpr double _z(const double & t, const double & tp, const double & t0)
             {
-                return (std::sqrt(tp - t) - std::sqrt(tp - t0)) / (std::sqrt(tp - t) + std::sqrt(tp - t0));
+                return (sqrtNR(tp - t) - sqrtNR(tp - t0)) / (sqrtNR(tp - t) + sqrtNR(tp - t0));
             }
 
         public:

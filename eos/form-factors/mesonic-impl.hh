@@ -29,6 +29,17 @@
 #include <eos/utils/kinematic.hh>
 #include <eos/utils/options.hh>
 #include <eos/utils/power_of.hh>
+#include <array>
+
+namespace Detail
+{
+    double constexpr sqrtNewtonRaphson(double x, double curr, double prev)
+    {
+        return curr == prev
+        ? curr
+        : sqrtNewtonRaphson(x, 0.5 * (curr + x / curr), curr);
+    }
+}
 
 namespace eos
 {
@@ -301,6 +312,14 @@ namespace eos
         private:
             // fit parametrisation for B_q -> Kstar according to [BFW2011]. We use the simple series expansion and
             // the results form LCSR only.
+            static double constexpr sqrtNR(double x)
+            {
+                return x >= 0 && x < std::numeric_limits<double>::infinity()
+                ? Detail::sqrtNewtonRaphson(x, x, 0)
+                : std::numeric_limits<double>::quiet_NaN();
+            }
+        
+        
             UsedParameter _beta_V0_0, _beta_V0_1;
             UsedParameter _beta_V1_0, _beta_V1_1;
             UsedParameter _beta_V2_0, _beta_V2_1;
@@ -308,7 +327,7 @@ namespace eos
             static constexpr const double _m_B = Tag_::mB, _m_V = Tag_::mV;
             static constexpr const double _tau_p = (_m_B + _m_V) * (_m_B + _m_V);
             static constexpr const double _tau_m = (_m_B - _m_V) * (_m_B - _m_V);
-            static constexpr const double _tau_0 = _tau_p - std::sqrt(_tau_p * _tau_p - _tau_m * _tau_p);
+            static constexpr const double _tau_0 = _tau_p - sqrtNR(_tau_p * _tau_p - _tau_m * _tau_p);
             static constexpr const double _m_R2_0m = Tag_::mR2_0m;
             static constexpr const double _m_R2_1m = Tag_::mR2_1m;
             static constexpr const double _m_R2_1p = Tag_::mR2_1p;
